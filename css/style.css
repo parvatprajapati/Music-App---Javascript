@@ -1,0 +1,217 @@
+/* /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain) */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 16px;
+    background: url("../images/landingBg.png") no-repeat fixed center;
+    background-color:rgba(218, 206, 68, 0.1);
+    transition: all .5s ease; 
+}
+
+
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+/*customized scollbar UI*/
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+
+}
+::-webkit-scrollbar-track {
+    /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+    -webkit-box-shadow:transparent;
+    border-radius: 6px;
+
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+   /* -webkit-box-shadow: inset 0 0 10px rgba(11,183,148,1);*/
+    -webkit-box-shadow: inset 0 0 12px #811239;
+}
+
+body{
+  background: #25252f !important;
+}
+.outerBox1{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outerBox{
+    width: 320px;
+    background: #2e3049;
+    border-radius: 20px;
+    box-shadow: 0px 1px 21px 0px rgba(0,0,0,.15);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    overflow: hidden;
+    text-transform: uppercase;
+}
+.myMusic{
+  font-size: 18px;
+  color: #fff;
+  padding: 24px 0;
+  width: 100%;
+  text-align: center;
+}
+.musicImg{
+  width: 180px;
+  height: 180px;
+  border-radius: 100%;
+  overflow: hidden;
+
+}
+.musicImg img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.titleArtist{
+  padding: 24px 0px;
+  text-align: center;
+}
+.orange{
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+.orangeIn{
+  width: 360px;
+  height: 360px;
+  background: #ff294f;
+  border-radius: 100%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.titleArtist h1{
+    font-size: 20px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+.titleArtist h3{
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 300
+}
+.playNext{
+  width: 50%;
+    margin: 0 auto;
+    padding-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.playPause{
+  width: 35px;
+    height: 35px;
+    background: #ff294f;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 1px 14px 1px rgba(0,0,0,.25);
+}
+.reverse{
+  transform: scaleX(-1);
+}
+.progressTiming{
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-top: 24px;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 51%;
+    height: 4px;
+    background: rgb(255 255 255 / .5);
+    outline: none;
+    opacity: 1;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 5px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0px 1px 14px 1px rgba(0,0,0,.25);
+}
+
+.slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #4CAF50;
+  cursor: pointer;
+}
+.p06{
+  padding: 0 6px;
+}

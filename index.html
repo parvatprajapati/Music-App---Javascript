@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" type="text/css" href="fonts/style.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet">
+<style>
+   
+</style>
+</head>
+<body>
+    <div class="outerBox1">
+        <div class="outerBox">
+            <h2 class="myMusic">My Music</h2>
+            <div class="musicImg">
+                <img src="images/sImg01.jpg">
+            </div>
+            <div class="titleArtist">
+                <h1>Raadhey Krishna ki Jyoti</h1>
+                <h3>Shreya Ghosal</h3>
+            </div>
+            <div class="orange">
+                <div class="orangeIn">
+                     <audio src="songs/songs_01.mp3" id="audio" ontimeupdate="timeFunction(this)" onended="onended(this)"></audio>
+                    <div class="playNext">
+                        <span class="icon-nexprevBtn reverse" onclick="previousFunction(songs)"></span>
+                        <span class="icon-play playPause" onclick="playHandler()"></span>
+                        <span class="icon-nexprevBtn" onclick="nextFunction(songs)"></span>
+                    </div>
+                    <div class="progressTiming">
+                        <span class="currentTime p06"></span>
+                        <input type="range" min="0" max="100" value="0" class="slider">
+                        <span class="totalTime p06"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+    const songs = [
+        {songImg:"sImg01",songName:"Raadhey Krishna ki Jyoti",songArtist:"Shreya Ghosal",songNumber:"songs_01"},
+        {songImg:"sImg02",songName:"Tainu Samanjh",songArtist:"Gold Boy",songNumber:"songs_02"},
+        {songImg:"sImg03",songName:"I Love You Mummy",songArtist:"Shweta Mohan",songNumber:"songs_03"},
+        {songImg:"sImg04",songName:"Mile Ho Tum Humko",songArtist:"Neha Kakkar",songNumber:"songs_04"},
+        {songImg:"sImg05",songName:"Kul Official",songArtist:"Music",songNumber:"songs_05"},
+    ]
+    console.log(songs)
+    const audio = document.getElementById('audio')
+    const songImgDiv = document.querySelector('.musicImg img')
+    const songNameDiv = document.querySelector('.titleArtist h1')
+    const songArtistDiv = document.querySelector('.titleArtist h3')
+    const currentTime = document.querySelector('.currentTime')
+    const totalTime = document.querySelector('.totalTime')
+    const slider = document.querySelector('.slider')
+    let isPlaying = true;
+    let index = 0
+
+    playHandler = ()=>{
+    if (isPlaying==true) {
+        audio.play()
+        document.querySelector('.playPause').classList.add('icon-pause')
+        document.querySelector('.playPause').classList.remove('icon-play')
+        isPlaying = false
+    }
+    else if(isPlaying==false){
+        audio.pause()
+        document.querySelector('.playPause').classList.remove('icon-pause')
+        document.querySelector('.playPause').classList.add('icon-play')
+        isPlaying = true
+    }
+    console.log(isPlaying)
+
+
+}
+    data = (songs)=>{
+       
+        audio.src =  "songs/"+songs[index].songNumber+".mp3";
+        if (!isPlaying) {audio.play()}
+        songImgDiv.src = "images/"+songs[index].songImg+".jpg";
+        songNameDiv.textContent = songs[index].songName;
+        songArtistDiv.textContent = songs[index].songArtist;
+
+
+    }
+    properDuration = (dur)=>{
+         let Minutes = Math.floor((dur/60)).toString()
+         let Seconds = (dur%60).toString()
+
+         return '0'+Minutes+' : '+Seconds
+    }
+    properCurrentTime = (dur)=>{
+        let Minutes = Math.floor((dur/60)).toString()
+        let Seconds = (dur%60).toString()
+        if (dur<10) {
+            return '0'+Minutes+' : '+'0'+Seconds
+        }
+        else{
+            return '0'+Minutes+' : '+Seconds
+        }
+    }
+    timeFunction = (track)=>{
+        currentTime.textContent =  properCurrentTime(Math.floor(track.currentTime).toString())
+        totalTime.textContent =   properDuration(Math.floor(track.duration).toString())
+        if (!isPlaying) {
+        if (currentTime.textContent===totalTime.textContent) {
+            document.querySelector('.playPause').classList.remove('icon-pause')
+            document.querySelector('.playPause').classList.add('icon-play')
+        }
+        }
+        slider.value = (track.currentTime*100)/track.duration
+
+        
+    }
+
+    nextFunction = (songs)=>{
+        if (isPlaying) {
+           console.log('true') 
+        }  
+        index++
+        index = index % songs.length
+        data(songs)
+    }
+    previousFunction = (songs)=>{
+        index--
+        index = (index+songs.length) % songs.length
+        data(songs)
+    }
+    
+
+</script>
+</html>
